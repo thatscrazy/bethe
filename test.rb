@@ -43,11 +43,11 @@ describe Deck do
 
 	it "should have the correct 13 cards for each suit" do
 		spades, hearts, diamonds, clubs = [], [], [], []			
-		total_card_value_per_suit = ( 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14)
+		total_card_value_per_suit = ( 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14 )
 		deck = Deck.new
 		deck.cards.each do | card |
 			case
-				when card.keys[0].include?("spades") then spades << card
+				when card.keys[0].include?("spades") == true then spades << card
 				when card.keys[0].include?("hearts") == true then hearts << card 
 				when card.keys[0].include?("clubs") == true then clubs << card 
 				when card.keys[0].include?("diamonds") == true then diamonds << card 
@@ -56,9 +56,9 @@ describe Deck do
 		spades_total, hearts_total, clubs_total, diamonds_total = 0, 0, 0, 0
 
 		# spade.values returns an array containing a string of our value:
-		#		2.4.1 :019 > spades.each { |spade| puts spade.values[0].class }
-    # 								String
-		#
+		#		> spades.each { |spade| puts spade.values[0].class } => String
+		#		> spades.each { |spade| puts spade.values.class } => Array
+		
 		spades.each { | spade | spades_total += spade.values[0].to_i }
 		assert spades_total == total_card_value_per_suit
 	end
